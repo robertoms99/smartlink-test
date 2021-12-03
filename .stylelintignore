@@ -1,0 +1,8 @@
+# any file distinct .{css,scss,sass}
+*
+!(*.{css,scss,sass})
+
+node_modules/
+
+build/
+dist/
