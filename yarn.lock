@@ -2066,6 +2066,11 @@
   "resolved" "https://registry.npmjs.org/@types/estree/-/estree-0.0.39.tgz"
   "version" "0.0.39"
 
+"@types/fabric@^4.5.6":
+  "integrity" "sha512-YV2wL7Bvv8xyO1cpkkDedZPu7TPXiM0kfDZDFo0DT1VEdAm4yRo6UxPEFBm+iFwbjvbodXkw0bUgP+iPdL2xxw=="
+  "resolved" "https://registry.npmjs.org/@types/fabric/-/fabric-4.5.6.tgz"
+  "version" "4.5.6"
+
 "@types/glob@^7.1.1":
   "integrity" "sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA=="
   "resolved" "https://registry.npmjs.org/@types/glob/-/glob-7.2.0.tgz"

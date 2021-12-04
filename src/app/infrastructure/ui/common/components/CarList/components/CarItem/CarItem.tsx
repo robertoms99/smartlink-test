@@ -22,12 +22,21 @@ import {
   VehiculeIcon
 } from './CarItem.styles'
 import ICarItem from './CartItem.interface'
+import fabric from 'fabric'
 
 const CarItem: React.FC<ICarItem> = ({ car }) => {
+  const test = () => {
+    const canvas = new fabric.fabric.Canvas('canvas', {
+      width: 200,
+      height: 200
+    })
+    console.log(canvas)
+  }
+
   return (
     <Root>
       <AditionalInformation>
-        <CarImage>
+        <CarImage onLoad={test}>
           <img src={car.imageUrl} alt="" />
         </CarImage>
         <Discount>-30%</Discount>
