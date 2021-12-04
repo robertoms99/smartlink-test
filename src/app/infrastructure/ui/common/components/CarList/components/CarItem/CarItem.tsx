@@ -1,5 +1,6 @@
-import { faDoorOpen, faUserAlt } from '@fortawesome/free-solid-svg-icons'
+import { faDoorOpen, faSuitcaseRolling, faUserAlt } from '@fortawesome/free-solid-svg-icons'
 import React from 'react'
+import formatPrice from '../../../../../../lib/util'
 import {
   CompanyLogo,
   Root,
@@ -20,40 +21,35 @@ import {
   ButtonVehicule,
   VehiculeIcon
 } from './CarItem.styles'
+import ICarItem from './CartItem.interface'
 
-const CarItem = () => {
+const CarItem: React.FC<ICarItem> = ({ car }) => {
   return (
     <Root>
       <AditionalInformation>
         <CarImage>
-          <img
-            src="https://post-development.multimedia.testing.amadeus.com/mdc/retrieveCarItem?ctg=VEHICLE&prov=ZE&cnt=US&vehcat=CCAR&item=0&stamp=VEHICLE_0_0_1601040607037&file=5.JPEG"
-            alt=""
-          />
+          <img src={car.imageUrl} alt="" />
         </CarImage>
         <Discount>-30%</Discount>
       </AditionalInformation>
       <MainInformation>
         <CompanyLogo>
-          <img
-            src="https://smartlinksdev.s3.us-east-2.amazonaws.com/rentals/ZE.jpg"
-            alt="company name"
-          />
+          <img src={car.companyImageUrl} alt="company name" />
         </CompanyLogo>
-        <CarCategory>Standard</CarCategory>
-        <CarModel>Nissan Rougue o Similar</CarModel>
+        <CarCategory>{car.category}</CarCategory>
+        <CarModel>{car.model}</CarModel>
         <Indicators>
           <Indicator>
             <IndicatorIcon icon={faUserAlt} />
-            <IndicatorNumber>3</IndicatorNumber>
+            <IndicatorNumber>{car.passengers}</IndicatorNumber>
           </Indicator>
           <Indicator>
             <IndicatorIcon icon={faDoorOpen} />
-            <IndicatorNumber>3</IndicatorNumber>
+            <IndicatorNumber>{car.doors}</IndicatorNumber>
           </Indicator>
           <Indicator>
-            <IndicatorIcon icon={faUserAlt} />
-            <IndicatorNumber>3</IndicatorNumber>
+            <IndicatorIcon icon={faSuitcaseRolling} />
+            <IndicatorNumber>{(car.carBaggage ?? []).length}</IndicatorNumber>
           </Indicator>
         </Indicators>
         <ButtonVehicule>
@@ -61,10 +57,12 @@ const CarItem = () => {
         </ButtonVehicule>
         <CarPriceInformation>
           <TotalPrice>
-            USD 400.00
+            {car.dailyRateCurrency} {formatPrice(car.dailyRate, car.dailyRateCurrency)}
             <span>/ dia</span>
           </TotalPrice>
-          <PriceDay>USD 1,200.00 / 3 días</PriceDay>
+          <PriceDay>
+            {car.totalRateCurrency} {formatPrice(car.totalRate, car.totalRateCurrency)} / 3 días
+          </PriceDay>
         </CarPriceInformation>
       </MainInformation>
       <ButtonCTA>Reservar</ButtonCTA>

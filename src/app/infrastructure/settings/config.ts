@@ -5,21 +5,10 @@ const CREDENTIALS = {
   clientId: 'https://test.destinojet.co'
 }
 
-const API_BASE = 'https://auth-testing.smartlinks.dev/api'
-
-let REST_API_URL = {
-  AUTHENTICATION: `auth/agency/token`,
-  SEARCH_CAR: `cars/search`
+const REST_API_URL = {
+  AUTHENTICATION: `https://auth-testing.smartlinks.dev/api/auth/agency/token`,
+  SEARCH_CAR: `https://search-testing.smartlinks.dev/api/cars/search`,
+  SEARCH_LOCATIONS: `https://management-testing.smartlinks.dev/api/locations/local`
 }
-
-type API_INTERFACE = typeof REST_API_URL & {
-  [key: string]: string
-}
-
-REST_API_URL = new Proxy(REST_API_URL, {
-  get(target: API_INTERFACE, key: string) {
-    return `${API_BASE}/${target[key]}`
-  }
-})
 
 export { CREDENTIALS, REST_API_URL }

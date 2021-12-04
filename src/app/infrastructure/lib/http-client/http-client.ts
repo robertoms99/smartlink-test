@@ -5,12 +5,12 @@ const httpClient = () => {}
 
 httpClient.get = async (url: string, headers?: Headers) => await requester(url, { headers })
 
-httpClient.post = async (url: string, body: any, headers?: Headers | any) =>
+httpClient.post = async (url: string, body: any, authorization: string = '') =>
   await requester(url, {
     body: JSON.stringify(body),
     headers: {
       'Content-Type': 'application/json',
-      ...headers
+      Authorization: authorization
     },
     method: 'POST'
   })

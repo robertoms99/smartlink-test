@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useEffect, useState } from 'react'
+import React, { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { createAuthService } from '../../../../factories/authentication.factory'
 import { CREDENTIALS } from '../../../../settings/config'
 
@@ -19,11 +19,13 @@ const AuthenticationContextProvider: React.FC = ({ children }) => {
 
   return (
     <AuthenticationContext.Provider value={{ token, refreshToken }}>
-      {children}
+      {token !== null && token !== '' ? children : null}
     </AuthenticationContext.Provider>
   )
 }
 
+const useAuthentication = () => useContext(AuthenticationContext)
+
 export default AuthenticationContext
 
-export { AuthenticationContext, AuthenticationContextProvider }
+export { AuthenticationContext, useAuthentication, AuthenticationContextProvider }

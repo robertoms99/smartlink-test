@@ -9,7 +9,7 @@ const CarList: React.FC<ICarList> = ({ cars }) => {
       <ul>
         {cars.map((car, index) => (
           <li key={index}>
-            <CarItem />
+            <CarItem car={car} />
           </li>
         ))}
       </ul>

@@ -10,6 +10,9 @@ export const Root = styled.article`
   border-radius: 2rem;
   padding: 1.25em 1em;
   box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 `
 
 export const AditionalInformation = styled.div`
@@ -19,6 +22,7 @@ export const AditionalInformation = styled.div`
 
 export const MainInformation = styled.div`
   padding: 0 1em;
+  margin-bottom: 1.25em;
 `
 
 export const CarImage = styled.figure`
@@ -125,7 +129,7 @@ export const ButtonVehicule = styled(CardButton)`
 `
 
 export const ButtonCTA = styled(CardButton)`
-  margin-top: 1.25em;
+  margin-top: auto;
   width: 100%;
   border-radius: 2.2rem;
   padding: 1em 0;
