@@ -10,6 +10,9 @@ export const Root = styled.main`
 export const Heading = styled.header`
   width: 80%;
   margin: auto;
+  @media (min-width: 578px) {
+    width: 100%;
+  }
   h1 {
     font-weight: 900;
     font-size: 3.6rem;

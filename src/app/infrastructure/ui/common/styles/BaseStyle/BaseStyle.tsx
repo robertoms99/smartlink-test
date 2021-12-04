@@ -48,6 +48,11 @@ a,
 button {
   cursor: pointer;
 }
+img,
+svg,
+canvas {
+  display: block;
+}
 `
 
 export default BaseStyle
