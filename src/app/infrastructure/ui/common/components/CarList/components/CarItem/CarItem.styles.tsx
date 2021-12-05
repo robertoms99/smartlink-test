@@ -16,7 +16,6 @@ export const Root = styled.article`
 export const AditionalInformation = styled.div`
   display: flex;
   align-items: flex-start;
-  margin-bottom: 1em;
 `
 
 export const MainInformation = styled.div`
