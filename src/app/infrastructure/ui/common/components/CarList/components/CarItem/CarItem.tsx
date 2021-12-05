@@ -1,5 +1,5 @@
 import { faDoorOpen, faSuitcaseRolling, faUserAlt } from '@fortawesome/free-solid-svg-icons'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { formatPrice } from '../../../../../../lib/util'
 import {
   CompanyLogo,
@@ -24,6 +24,11 @@ import {
 import ICarItem from './CartItem.interface'
 
 const CarItem: React.FC<ICarItem> = ({ car }) => {
+  const days = useMemo(() => {
+    const days = Math.ceil(car.totalRate / car.dailyRate)
+    return `${days} días`
+  }, [car.dailyRate, car.totalRate])
+
   return (
     <Root>
       <AditionalInformation>
@@ -61,7 +66,7 @@ const CarItem: React.FC<ICarItem> = ({ car }) => {
             <span>/ dia</span>
           </TotalPrice>
           <PriceDay>
-            {car.totalRateCurrency} {formatPrice(car.totalRate, car.totalRateCurrency)} / 3 días
+            {car.totalRateCurrency} {formatPrice(car.totalRate, car.totalRateCurrency)} / {days}
           </PriceDay>
         </CarPriceInformation>
       </MainInformation>
