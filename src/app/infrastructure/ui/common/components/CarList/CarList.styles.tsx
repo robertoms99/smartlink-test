@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Root = styled.section`
-  margin-top: 3em;
+  margin-top: 6em;
   ul {
     --cols: 1;
     display: grid;
@@ -15,6 +15,6 @@ export const Root = styled.section`
     }
   }
   li {
-    margin-bottom: 3.5rem;
+    margin-bottom: 7rem;
   }
 `

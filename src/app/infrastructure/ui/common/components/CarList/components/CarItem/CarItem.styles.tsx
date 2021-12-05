@@ -4,8 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
 
 export const Root = styled.article`
-  overflow: hidden;
-  isolation: isolate;
   background-color: white;
   border-radius: 2rem;
   padding: 1.25em 1em;
@@ -18,6 +16,7 @@ export const Root = styled.article`
 export const AditionalInformation = styled.div`
   display: flex;
   align-items: flex-start;
+  margin-bottom: 1em;
 `
 
 export const MainInformation = styled.div`
@@ -26,11 +25,15 @@ export const MainInformation = styled.div`
 `
 
 export const CarImage = styled.figure`
-  max-width: 60%;
+  flex-grow: 1;
+  margin-top: -6.5em;
+  filter: brightness(1.1);
+  mix-blend-mode: multiply;
   img {
-    height: 100%;
-    width: 100%;
+    height: 120%;
+    width: 120%;
     object-fit: cover;
+    transform: translateX(-10%);
   }
 `
 
@@ -115,17 +118,6 @@ export const CardButton = styled.button`
 export const ButtonVehicule = styled(CardButton)`
   padding: 0.7em;
   border-radius: 0.5rem;
-  position: relative;
-  ::after {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    height: 1px;
-    width: 10rem;
-    background-color: var(--color-grey-lightest);
-    top: 50%;
-    transform: translateY(-50%) scaleX(100);
-  }
 `
 
 export const ButtonCTA = styled(CardButton)`
