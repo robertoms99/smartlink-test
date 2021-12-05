@@ -49,6 +49,7 @@
     "start": "yarn build && http-server ./dist",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:ci": "react-scripts test --watchAll=false",
     "prepare": "husky install",
     "eject": "react-scripts eject",
     "lint:commit": "commitlint --color --format --verbose --edit",
