@@ -3,15 +3,15 @@ import { useParams } from 'react-router-dom'
 import { useCars } from '../../../hooks'
 import { CarList, Loader } from '../../components'
 import CarItemStyles from '../../components/CarList/components/CarItem/CarItem.styles'
-import { Heading, Root } from './Home.styles'
+import { Heading, Root, BrandLogo } from './Home.styles'
 
 const Home = () => {
   const { originCityCode, destinationCityCode, pickUpDate, dropOffDate } = useParams()
   const { isLoading, cars, destination } = useCars({
-    originCityCode,
-    destinationCityCode,
-    pickUpDate,
-    dropOffDate
+    originCityCode: originCityCode ?? '',
+    destinationCityCode: destinationCityCode ?? '',
+    pickUpDate: pickUpDate ?? '',
+    dropOffDate: dropOffDate ?? ''
   })
 
   const retry = useCallback(() => {
@@ -32,10 +32,14 @@ const Home = () => {
       ) : (
         <>
           <Heading>
-            <h1> Hola Pedro,</h1>
+            <h1> Hola Roberto,</h1>
             <span>Ahorra hasta un 30% agregando un auto en tu viaje a {destination}</span>
           </Heading>
-          {cars !== null && <CarList cars={cars} />}
+          {Array.isArray(cars) && <CarList cars={cars} />}
+          <BrandLogo>
+            <span>Powered by</span>
+            <img src="https://res.cloudinary.com/ultragroup/image/upload/c_limit,h_100,w_200/utr8aiyycdl7iv9ahpjl" />
+          </BrandLogo>
         </>
       )}
     </Root>

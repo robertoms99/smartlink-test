@@ -33,3 +33,14 @@ export const Heading = styled.header`
     font-size: var(--initial-font-size);
   }
 `
+
+export const BrandLogo = styled.figure`
+  width: 14rem;
+  float: right;
+  span {
+    font-weight: 900;
+  }
+  img {
+    width: 100%;
+  }
+`

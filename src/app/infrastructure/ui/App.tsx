@@ -12,7 +12,7 @@ function App() {
       <GlobalStyles />
       <AuthenticationContextProvider>
         <MainLayout>
-          <Suspense fallback={<div>loading</div>}>
+          <Suspense fallback={<div>loading...</div>}>
             <Switch>
               <Route
                 element={<HomePage />}

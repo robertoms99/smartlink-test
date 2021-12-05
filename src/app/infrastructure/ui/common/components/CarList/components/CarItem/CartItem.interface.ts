@@ -1,3 +1,5 @@
+import ICar from '../../../../../../interfaces/car.interface'
+
 export default interface ICarItem {
-  car: any
+  car: ICar
 }

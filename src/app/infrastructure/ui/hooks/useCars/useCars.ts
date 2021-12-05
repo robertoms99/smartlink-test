@@ -1,7 +1,8 @@
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createCarService } from '../../../factories/car.factory'
 import { createLocationService } from '../../../factories/location.factory'
-import { AuthenticationContext } from '../../common/contexts'
+import ICar from '../../../interfaces/car.interface'
+import { useAuthentication } from '../../common/contexts/AuthenticationContext/AuthenticationContext'
 
 const getDateFromParam = (dateParam: string) => {
   const arrayString = []
@@ -20,12 +21,24 @@ const getDateFromParam = (dateParam: string) => {
   return `20${arrayString.join('-')}`
 }
 
-const useCars = ({ originCityCode, destinationCityCode, pickUpDate, dropOffDate }: any) => {
+interface ISearchParams {
+  originCityCode: string
+  destinationCityCode: string
+  pickUpDate: string
+  dropOffDate: string
+}
+
+const useCars = ({
+  originCityCode,
+  destinationCityCode,
+  pickUpDate,
+  dropOffDate
+}: ISearchParams) => {
   const [locations, setLocations] = useState<null | any[]>(null)
-  const [cars, setCars] = useState(null)
+  const [cars, setCars] = useState<null | string | ICar[]>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [destination, setDestination] = useState('')
-  const { token } = useContext(AuthenticationContext)
+  const { token } = useAuthentication()
 
   useEffect(() => {
     ;(async () => {
@@ -33,7 +46,9 @@ const useCars = ({ originCityCode, destinationCityCode, pickUpDate, dropOffDate 
       try {
         const locations = await locationService.getAllLocations(token)
         setLocations(locations)
-      } catch (error) {}
+      } catch (error: any) {
+        setCars(error.error.message)
+      }
     })().catch(console.error)
   }, [])
 
@@ -41,10 +56,12 @@ const useCars = ({ originCityCode, destinationCityCode, pickUpDate, dropOffDate 
     if (locations !== null) {
       ;(async () => {
         const carService = createCarService()
+
         const locationToSearch = {
           PickUpLocation: null,
           DropOffLocation: null
         }
+
         for (const location of locations) {
           if (location.cityCode === originCityCode.toUpperCase())
             locationToSearch.PickUpLocation = location
@@ -55,6 +72,7 @@ const useCars = ({ originCityCode, destinationCityCode, pickUpDate, dropOffDate 
           if (locationToSearch.DropOffLocation !== null && locationToSearch.PickUpLocation !== null)
             break
         }
+
         const searchData = {
           ...locationToSearch,
           PickUpDate: getDateFromParam(pickUpDate),
@@ -67,6 +85,7 @@ const useCars = ({ originCityCode, destinationCityCode, pickUpDate, dropOffDate 
           corporateDiscount: '0',
           AgencyUrl: 'test.destinojet.co'
         }
+
         try {
           const cars = await carService.searchCars(searchData, token)
           setCars(cars)
