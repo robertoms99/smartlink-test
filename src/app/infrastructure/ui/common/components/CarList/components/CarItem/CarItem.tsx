@@ -1,6 +1,6 @@
 import { faDoorOpen, faSuitcaseRolling, faUserAlt } from '@fortawesome/free-solid-svg-icons'
 import React from 'react'
-import formatPrice from '../../../../../../lib/util'
+import { formatPrice } from '../../../../../../lib/util'
 import {
   CompanyLogo,
   Root,

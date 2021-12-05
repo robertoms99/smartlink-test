@@ -124,6 +124,13 @@ export const ButtonCTA = styled(CardButton)`
   border-radius: 2.2rem;
   padding: 1em 0;
   margin-top: auto;
+  transition: transform 100ms;
+  :hover {
+    transform: translateY(-0.2rem);
+  }
+  :active {
+    transform: translateY(0.1rem);
+  }
 `
 
 const CarItemStyles = { ButtonCTA }
