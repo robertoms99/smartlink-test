@@ -1,10 +1,19 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const Root = styled.main`
+export const Root = styled.main<{ $loading?: boolean; $error?: boolean }>`
   min-height: 100vh;
   max-width: 112rem;
   margin: auto;
   padding: 13rem 1.3rem;
+  ${({ $loading = false, $error = false }) =>
+    ($loading || $error) &&
+    css`
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    `}
 `
 
 export const Heading = styled.header`

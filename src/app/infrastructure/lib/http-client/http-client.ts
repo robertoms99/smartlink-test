@@ -30,11 +30,12 @@ const requester = async (resource: string | Request, init?: RequestInit) => {
 
   try {
     const data = await response.json()
-    if (ERROR_RESPONSES.includes(response.status)) throw new ResponseError(data)
     body.data = data
+    if (ERROR_RESPONSES.includes(response.status)) throw new ResponseError(body)
   } catch (error: any) {
-    body.error = error
+    error.error = error
     if (!(error instanceof ResponseError)) body.status = RESPONSES_CODES.INTERNAL_ERROR
+    throw error
   }
 
   return body

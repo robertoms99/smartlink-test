@@ -129,11 +129,13 @@ export const ButtonVehicule = styled(CardButton)`
 `
 
 export const ButtonCTA = styled(CardButton)`
-  margin-top: auto;
   width: 100%;
   border-radius: 2.2rem;
   padding: 1em 0;
+  margin-top: auto;
 `
+
+const CarItemStyles = { ButtonCTA }
 
 export const VehiculeIcon = styled(({ className }: any) => (
   <FontAwesomeIcon icon={faCar} className={className} />
@@ -142,3 +144,5 @@ export const VehiculeIcon = styled(({ className }: any) => (
   width: 1.5em !important;
   height: 1.5em !important;
 `
+
+export default CarItemStyles

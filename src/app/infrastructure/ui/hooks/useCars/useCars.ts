@@ -67,13 +67,15 @@ const useCars = ({ originCityCode, destinationCityCode, pickUpDate, dropOffDate 
           corporateDiscount: '0',
           AgencyUrl: 'test.destinojet.co'
         }
-        const cars = await carService.searchCars(searchData, token)
-        setCars(cars)
-      })()
-        .catch(console.error)
-        .finally(() => {
-          setIsLoading(false)
-        })
+        try {
+          const cars = await carService.searchCars(searchData, token)
+          setCars(cars)
+        } catch (err: any) {
+          setCars(err.error.message)
+        }
+      })().finally(() => {
+        setIsLoading(false)
+      })
     }
   }, [locations])
 
