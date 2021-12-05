@@ -47,7 +47,7 @@
   "scripts": {
     "dev": "react-scripts start",
     "start": "yarn build && http-server ./dist",
-    "build": "react-scripts build",
+    "build": "react-scripts build && echo '/* /index.html  200' | cat >build/_redirects ",
     "test": "react-scripts test",
     "test:ci": "react-scripts test --watchAll=false",
     "prepare": "husky install",

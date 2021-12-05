@@ -1,46 +1,60 @@
-# Getting Started with Create React App
+# SmartLinks Test App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+SmartLinks Test App es una aplicación construida en React. Consiste en una aplicación web de agencia de viajes que consume varios Microservicios proporcionados para para mostrar las recomendaciones de autos según los criterios que enviemos por url y asi cumplir los requerimientos de la prueba técnica de smartlinksDev como Frontend Developer.
 
-## Available Scripts
+# Requerimientos
 
-In the project directory, you can run:
+- La aplicación debe ser entregada, desplegada y usable.
+- El sistema debe recibir los parámetros por GET, para que pueda tomarlos y hacer la consulta a la API, es decir, se espera una URL amigable y reciba las siguientes variables:
+  - origen
+  - destino
+  - fecha recogida
+  - fecha entrega
+- Así debe formarse la URL del sistema: TUDOMINIO.com/challenge/{originCityCode}/{destinationCityCode}/{pickUpDate}/{dropOffDate}
+- El sistema debe mostrar los datos según el diseño desarrollado por nuestra especialista de UX/UI, siendo full responsive
 
-### `yarn start`
+# Diseño
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![image](https://user-images.githubusercontent.com/54558382/144766776-46e1efda-a1eb-4060-84f3-26783e214951.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Casos de uso
 
-### `yarn test`
+Por ejemplo:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Para una búsqueda de un auto recogiendo en miami y dejando en miami del 1 de enero al 3 de enero del 2022:
+  - TUDOMINIO.com/challenge/mia/mia/010122/030122
+- Para una búsqueda de un auto recogiendo en miami y dejando en miami del 20 de Mayo al 22 de Mayo del 2022:
+  - TUDOMINIO.com/challenge/mia/mia/200522/220522
 
-### `yarn build`
+# Solucion
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Al momento de iniciar la aplicacion y ser pasados los parametros necesarios en la url del navegador empezara a cargar la aplicacion solicitando el Bearer token, las localizaciones almacenadas y luego se buscaran las recomendaciones de autos respecto a la localizacion y el rango de fechas parametrizados:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![image](https://user-images.githubusercontent.com/54558382/144766941-f55e7fe3-30c9-4ea1-8d63-98e653c28461.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Herramientas
 
-### `yarn eject`
+- html
+- css
+- javascript
+- typescript
+- reactjs
+- styled-components
+- netlify
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Scripts
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Para correr el proyecto en desarrollo:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  - ### `yarn dev`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Para correr los tests unitarios:
 
-## Learn More
+  - ### `yarn test`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Para lanzar la aplicacion en un server local
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  - ### `yarn start`
+
+- Para compilar la aplicacion en directorio estatico
+  - ### `yarn build`
