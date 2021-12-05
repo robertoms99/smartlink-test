@@ -1,9 +1,8 @@
-name: Testing Pipeline CI/CD
+name: Develop Pipeline CI/CD
 on:
   pull_request:
     branches:
       - develop
-      - master
 
 jobs:
   test:
